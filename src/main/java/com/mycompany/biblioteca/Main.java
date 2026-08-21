@@ -11,9 +11,8 @@ public class Main {
 
     static ArrayList<Cliente> clientes = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
-    static ArrayList<Cliente> clientes = new ArrayList<>();
 static ArrayList<Libro> libros = new ArrayList<>();
-
+static ArrayList<Prestamo> prestamos = new ArrayList<>();
     public static void main(String[] args) {
         // Aquí irá el menú (Fase 8)
     }
@@ -206,4 +205,20 @@ public static void eliminarLibro(int id) {
     }
 
     System.out.println("No se encontró ningún libro con el ID: " + id);
+}
+
+public static void crearPrestamo(int id, Cliente cliente, Libro libro,
+                                 String fechaPrestamo, String fechaDevolucion) {
+
+    Prestamo prestamo = new Prestamo(
+            id,
+            cliente,
+            libro,
+            fechaPrestamo,
+            fechaDevolucion
+    );
+
+    prestamos.add(prestamo);
+
+    System.out.println("Préstamo registrado correctamente.");
 }
