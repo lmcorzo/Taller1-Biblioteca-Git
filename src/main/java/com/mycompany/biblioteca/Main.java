@@ -44,3 +44,40 @@ public static void crearCliente() {
 
     System.out.println("Cliente creado correctamente.");
 }
+
+// ==================== READ ====================
+
+// Listar clientes
+public static void listarClientes() {
+    if (clientes.isEmpty()) {
+        System.out.println("No hay clientes registrados.");
+        return;
+    }
+
+    System.out.println("\n===== LISTA DE CLIENTES =====");
+
+    for (Cliente cliente : clientes) {
+        System.out.println("ID: " + cliente.getId());
+        System.out.println("Nombre: " + cliente.getNombre());
+        System.out.println("Correo: " + cliente.getCorreo());
+        System.out.println("Teléfono: " + cliente.getTelefono());
+        System.out.println("-----------------------------");
+    }
+}
+
+// Buscar cliente
+public static void buscarCliente(int id) {
+    for (Cliente cliente : clientes) {
+        if (cliente.getId() == id) {
+            System.out.println("\n===== CLIENTE ENCONTRADO =====");
+            System.out.println("ID: " + cliente.getId());
+            System.out.println("Nombre: " + cliente.getNombre());
+            System.out.println("Correo: " + cliente.getCorreo());
+            System.out.println("Teléfono: " + cliente.getTelefono());
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún cliente con el ID: " + id);
+}
+
