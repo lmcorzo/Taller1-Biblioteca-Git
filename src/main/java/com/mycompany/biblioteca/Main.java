@@ -81,3 +81,18 @@ public static void buscarCliente(int id) {
     System.out.println("No se encontró ningún cliente con el ID: " + id);
 }
 
+// UPDATE - Actualizar cliente
+public static void actualizarCliente(int id, String nombre, String correo, String telefono) {
+    for (Cliente cliente : clientes) {
+        if (cliente.getId() == id) {
+            cliente.setNombre(nombre);
+            cliente.setCorreo(correo);
+            cliente.setTelefono(telefono);
+
+            System.out.println("Cliente actualizado correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún cliente con el ID: " + id);
+}
