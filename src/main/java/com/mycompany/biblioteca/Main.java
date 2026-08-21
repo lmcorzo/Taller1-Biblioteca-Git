@@ -237,3 +237,22 @@ public static void devolucion(int id, String fechaDevolucion) {
 
     System.out.println("No se encontró ningún préstamo con el ID: " + id);
 }
+
+public static void listarPrestamos() {
+
+    if (prestamos.isEmpty()) {
+        System.out.println("No hay préstamos registrados.");
+        return;
+    }
+
+    System.out.println("\n===== LISTA DE PRÉSTAMOS =====");
+
+    for (Prestamo prestamo : prestamos) {
+        System.out.println("ID del préstamo: " + prestamo.getId());
+        System.out.println("Cliente: " + prestamo.getCliente().getNombre());
+        System.out.println("Libro: " + prestamo.getLibro().getNombre());
+        System.out.println("Fecha del préstamo: " + prestamo.getFechaPrestamo());
+        System.out.println("Fecha de devolución: " + prestamo.getFechaDevolucion());
+        System.out.println("-----------------------------");
+    }
+}
