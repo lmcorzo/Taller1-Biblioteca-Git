@@ -96,3 +96,16 @@ public static void actualizarCliente(int id, String nombre, String correo, Strin
 
     System.out.println("No se encontró ningún cliente con el ID: " + id);
 }
+
+// DELETE - Eliminar cliente
+public static void eliminarCliente(int id) {
+    for (Cliente cliente : clientes) {
+        if (cliente.getId() == id) {
+            clientes.remove(cliente);
+            System.out.println("Cliente eliminado correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún cliente con el ID: " + id);
+}
