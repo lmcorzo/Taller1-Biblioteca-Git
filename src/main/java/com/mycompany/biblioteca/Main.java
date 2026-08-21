@@ -222,3 +222,18 @@ public static void crearPrestamo(int id, Cliente cliente, Libro libro,
 
     System.out.println("Préstamo registrado correctamente.");
 }
+public static void devolucion(int id, String fechaDevolucion) {
+
+    for (Prestamo prestamo : prestamos) {
+
+        if (prestamo.getId() == id) {
+
+            prestamo.setFechaDevolucion(fechaDevolucion);
+
+            System.out.println("Libro devuelto correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún préstamo con el ID: " + id);
+}
