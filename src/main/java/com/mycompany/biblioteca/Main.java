@@ -4,13 +4,347 @@
 
 package com.mycompany.biblioteca;
 
-/**
- *
- * @author ASUS
- */
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
 
+    static ArrayList<Cliente> clientes = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+static ArrayList<Libro> libros = new ArrayList<>();
+static ArrayList<Prestamo> prestamos = new ArrayList<>();
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // Aquí irá el menú (Fase 8)
+    }
+}
+public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
+    int opcion;
+
+    do {
+        System.out.println("\n===== SISTEMA DE GESTIÓN =====");
+        System.out.println("1. Crear cliente");
+        System.out.println("2. Listar clientes");
+        System.out.println("3. Buscar cliente");
+        System.out.println("4. Actualizar cliente");
+        System.out.println("5. Eliminar cliente");
+        System.out.println("6. Crear libro");
+        System.out.println("7. Listar libros");
+        System.out.println("8. Buscar libro");
+        System.out.println("9. Actualizar libro");
+        System.out.println("10. Eliminar libro");
+        System.out.println("11. Registrar préstamo");
+        System.out.println("12. Registrar devolución");
+        System.out.println("13. Listar préstamos");
+        System.out.println("0. Salir");
+        System.out.print("Seleccione una opción: ");
+
+        opcion = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (opcion) {
+
+            case 1:
+                System.out.println("Crear cliente");
+                break;
+
+            case 2:
+                listarClientes();
+                break;
+
+            case 3:
+                System.out.println("Buscar cliente");
+                break;
+
+            case 4:
+                System.out.println("Actualizar cliente");
+                break;
+
+            case 5:
+                System.out.println("Eliminar cliente");
+                break;
+
+            case 6:
+                System.out.println("Crear libro");
+                break;
+
+            case 7:
+                listarLibros();
+                break;
+
+            case 8:
+                System.out.println("Buscar libro");
+                break;
+
+            case 9:
+                System.out.println("Actualizar libro");
+                break;
+
+            case 10:
+                System.out.println("Eliminar libro");
+                break;
+
+            case 11:
+                System.out.println("Registrar préstamo");
+                break;
+
+            case 12:
+                System.out.println("Registrar devolución");
+                break;
+
+            case 13:
+                listarPrestamos();
+                break;
+
+            case 0:
+                System.out.println("Saliendo del sistema...");
+                break;
+
+            default:
+                System.out.println("Opción inválida.");
+        }
+
+    } while (opcion != 0);
+
+    scanner.close();
+}
+
+public static void crearCliente() {
+
+    System.out.println("=== REGISTRAR CLIENTE ===");
+
+    System.out.print("Nombre: ");
+    String nombre = sc.nextLine();
+
+    System.out.print("Documento: ");
+    String documento = sc.nextLine();
+
+    System.out.print("Teléfono: ");
+    String telefono = sc.nextLine();
+
+    System.out.print("Código del cliente: ");
+    String codigoCliente = sc.nextLine();
+
+    Cliente cliente = new Cliente(
+            nombre,
+            documento,
+            telefono,
+            codigoCliente
+    );
+
+    Clientes.add(cliente);
+
+    System.out.println("Cliente creado correctamente.");
+}
+
+// ==================== READ ====================
+
+// Listar clientes
+public static void listarClientes() {
+    if (clientes.isEmpty()) {
+        System.out.println("No hay clientes registrados.");
+        return;
+    }
+
+    System.out.println("\n===== LISTA DE CLIENTES =====");
+
+    for (Cliente cliente : clientes) {
+        System.out.println("ID: " + cliente.getId());
+        System.out.println("Nombre: " + cliente.getNombre());
+        System.out.println("Correo: " + cliente.getCorreo());
+        System.out.println("Teléfono: " + cliente.getTelefono());
+        System.out.println("-----------------------------");
+    }
+}
+
+// Buscar cliente
+public static void buscarCliente(int id) {
+    for (Cliente cliente : clientes) {
+        if (cliente.getId() == id) {
+            System.out.println("\n===== CLIENTE ENCONTRADO =====");
+            System.out.println("ID: " + cliente.getId());
+            System.out.println("Nombre: " + cliente.getNombre());
+            System.out.println("Correo: " + cliente.getCorreo());
+            System.out.println("Teléfono: " + cliente.getTelefono());
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún cliente con el ID: " + id);
+}
+
+// UPDATE - Actualizar cliente
+public static void actualizarCliente(int id, String nombre, String correo, String telefono) {
+    for (Cliente cliente : clientes) {
+        if (cliente.getId() == id) {
+            cliente.setNombre(nombre);
+            cliente.setCorreo(correo);
+            cliente.setTelefono(telefono);
+
+            System.out.println("Cliente actualizado correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún cliente con el ID: " + id);
+}
+
+// DELETE - Eliminar cliente
+public static void eliminarCliente(int id) {
+    for (Cliente cliente : clientes) {
+        if (cliente.getId() == id) {
+            clientes.remove(cliente);
+            System.out.println("Cliente eliminado correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún cliente con el ID: " + id);
+}
+public static void crearLibro(int id, String nombre, String descripcion,
+                              int cantidad, String autor, String editorial,
+                              int numeroPaginas) {
+
+    Libro libro = new Libro(
+            id,
+            nombre,
+            descripcion,
+            cantidad,
+            autor,
+            editorial,
+            numeroPaginas
+    );
+
+    libros.add(libro);
+
+    System.out.println("Libro creado correctamente.");
+}
+public static void listarLibros() {
+
+    if (libros.isEmpty()) {
+        System.out.println("No hay libros registrados.");
+        return;
+    }
+
+    System.out.println("\n===== LISTA DE LIBROS =====");
+
+    for (Libro libro : libros) {
+        System.out.println("ID: " + libro.getId());
+        System.out.println("Nombre: " + libro.getNombre());
+        System.out.println("Descripción: " + libro.getDescripcion());
+        System.out.println("Cantidad: " + libro.getCantidad());
+        System.out.println("Autor: " + libro.getAutor());
+        System.out.println("Editorial: " + libro.getEditorial());
+        System.out.println("Número de páginas: " + libro.getNumeroPaginas());
+        System.out.println("-----------------------------");
+    }
+}
+public static void buscarLibro(int codigo) {
+
+    for (Libro libro : libros) {
+
+        if (libro.getId() == codigo) {
+
+            System.out.println("\n===== LIBRO ENCONTRADO =====");
+            System.out.println("ID: " + libro.getId());
+            System.out.println("Nombre: " + libro.getNombre());
+            System.out.println("Descripción: " + libro.getDescripcion());
+            System.out.println("Cantidad: " + libro.getCantidad());
+            System.out.println("Autor: " + libro.getAutor());
+            System.out.println("Editorial: " + libro.getEditorial());
+            System.out.println("Número de páginas: " + libro.getNumeroPaginas());
+
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún libro con el código: " + codigo);
+}
+public static void actualizarLibro(int id, String nombre, String descripcion,
+                                   int cantidad, String autor, String editorial,
+                                   int numeroPaginas) {
+
+    for (Libro libro : libros) {
+
+        if (libro.getId() == id) {
+
+            libro.setNombre(nombre);
+            libro.setDescripcion(descripcion);
+            libro.setCantidad(cantidad);
+            libro.setAutor(autor);
+            libro.setEditorial(editorial);
+            libro.setNumeroPaginas(numeroPaginas);
+
+            System.out.println("Libro actualizado correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún libro con el ID: " + id);
+}
+public static void eliminarLibro(int id) {
+
+    for (Libro libro : libros) {
+
+        if (libro.getId() == id) {
+
+            libros.remove(libro);
+
+            System.out.println("Libro eliminado correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún libro con el ID: " + id);
+}
+
+public static void crearPrestamo(int id, Cliente cliente, Libro libro,
+                                 String fechaPrestamo, String fechaDevolucion) {
+
+    Prestamo prestamo = new Prestamo(
+            id,
+            cliente,
+            libro,
+            fechaPrestamo,
+            fechaDevolucion
+    );
+
+    prestamos.add(prestamo);
+
+    System.out.println("Préstamo registrado correctamente.");
+}
+public static void devolucion(int id, String fechaDevolucion) {
+
+    for (Prestamo prestamo : prestamos) {
+
+        if (prestamo.getId() == id) {
+
+            prestamo.setFechaDevolucion(fechaDevolucion);
+
+            System.out.println("Libro devuelto correctamente.");
+            return;
+        }
+    }
+
+    System.out.println("No se encontró ningún préstamo con el ID: " + id);
+}
+
+public static void listarPrestamos() {
+
+    if (prestamos.isEmpty()) {
+        System.out.println("No hay préstamos registrados.");
+        return;
+    }
+
+    System.out.println("\n===== LISTA DE PRÉSTAMOS =====");
+
+    for (Prestamo prestamo : prestamos) {
+        System.out.println("ID del préstamo: " + prestamo.getId());
+        System.out.println("Cliente: " + prestamo.getCliente().getNombre());
+        System.out.println("Libro: " + prestamo.getLibro().getNombre());
+        System.out.println("Fecha del préstamo: " + prestamo.getFechaPrestamo());
+        System.out.println("Fecha de devolución: " + prestamo.getFechaDevolucion());
+        System.out.println("-----------------------------");
     }
 }
