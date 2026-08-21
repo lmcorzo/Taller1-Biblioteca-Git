@@ -17,6 +17,98 @@ static ArrayList<Prestamo> prestamos = new ArrayList<>();
         // Aquí irá el menú (Fase 8)
     }
 }
+public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
+    int opcion;
+
+    do {
+        System.out.println("\n===== SISTEMA DE GESTIÓN =====");
+        System.out.println("1. Crear cliente");
+        System.out.println("2. Listar clientes");
+        System.out.println("3. Buscar cliente");
+        System.out.println("4. Actualizar cliente");
+        System.out.println("5. Eliminar cliente");
+        System.out.println("6. Crear libro");
+        System.out.println("7. Listar libros");
+        System.out.println("8. Buscar libro");
+        System.out.println("9. Actualizar libro");
+        System.out.println("10. Eliminar libro");
+        System.out.println("11. Registrar préstamo");
+        System.out.println("12. Registrar devolución");
+        System.out.println("13. Listar préstamos");
+        System.out.println("0. Salir");
+        System.out.print("Seleccione una opción: ");
+
+        opcion = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (opcion) {
+
+            case 1:
+                System.out.println("Crear cliente");
+                break;
+
+            case 2:
+                listarClientes();
+                break;
+
+            case 3:
+                System.out.println("Buscar cliente");
+                break;
+
+            case 4:
+                System.out.println("Actualizar cliente");
+                break;
+
+            case 5:
+                System.out.println("Eliminar cliente");
+                break;
+
+            case 6:
+                System.out.println("Crear libro");
+                break;
+
+            case 7:
+                listarLibros();
+                break;
+
+            case 8:
+                System.out.println("Buscar libro");
+                break;
+
+            case 9:
+                System.out.println("Actualizar libro");
+                break;
+
+            case 10:
+                System.out.println("Eliminar libro");
+                break;
+
+            case 11:
+                System.out.println("Registrar préstamo");
+                break;
+
+            case 12:
+                System.out.println("Registrar devolución");
+                break;
+
+            case 13:
+                listarPrestamos();
+                break;
+
+            case 0:
+                System.out.println("Saliendo del sistema...");
+                break;
+
+            default:
+                System.out.println("Opción inválida.");
+        }
+
+    } while (opcion != 0);
+
+    scanner.close();
+}
 
 public static void crearCliente() {
 
